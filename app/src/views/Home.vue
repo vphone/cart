@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    Maisons du Monde
+    <h1>Maisons du Monde</h1>
   </div>
 </template>
 

@@ -20,6 +20,7 @@ const routes = [
     name: 'Cart',
     component: () => import('../views/Cart.vue'),
   },
+  { path: '/catalogue/:id', component: () => import('../views/Item.vue'), props: true },
 ];
 
 const router = new VueRouter({
