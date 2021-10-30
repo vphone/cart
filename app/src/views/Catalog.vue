@@ -1,5 +1,5 @@
 <template>
-  <div class="cart">
+  <div class="catalog">
     <Products />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import Products from '@/components/Products.vue';
 
 export default {
-  name: 'Cart',
+  name: 'Catalog',
   components: {
     Products,
   },

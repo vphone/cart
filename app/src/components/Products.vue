@@ -1,18 +1,23 @@
 <template>
-  <div class="cart">
+  <div class="Products">
     <div v-for="item, index in items" :key="index">
-       {{item.name}}
+      <ProductCard :name="item.name"
+      :price="item.price.base.formatted"
+      :image="item.images[0].xsmall"
+      :reference="item.reference"
+    />
     </div>
  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
-  name: 'Cart',
+  name: 'Products',
+  components: { ProductCard },
   props: {
-    msg: String,
   },
   computed: mapState([
     'items',

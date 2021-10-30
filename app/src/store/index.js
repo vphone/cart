@@ -9,10 +9,17 @@ const URL = 'http://localhost:3000/cart';
 export default new Vuex.Store({
   state: {
     items: [],
+    cart: [],
   },
   mutations: {
     setItems(state, items) {
       state.items = items;
+    },
+    addItemInCart(state, item) {
+      state.cart.push(item);
+    },
+    removeItemInCart(state) {
+      state.cart.splice();
     },
   },
   actions: {
@@ -20,7 +27,6 @@ export default new Vuex.Store({
       commit,
     }) {
       axios.get(URL).then((response) => {
-        console.log(response.data, this);
         commit('setItems', response.data);
       });
     },

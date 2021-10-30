@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/cart">cart</router-link>
+      <router-link to="/catalogue">Catalogue</router-link> |
+      <router-link to="/panier">Panier</router-link>
     </div>
     <router-view/>
   </div>
