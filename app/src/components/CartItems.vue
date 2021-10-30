@@ -1,24 +1,22 @@
 <template>
   <div class="CartItems">
     <div v-for="item, index in datas" :key="index">
-     {{ item.name }}
+     <router-link :to="`/catalogue/${item.reference}`">{{ item.name }}</router-link>
     <button type="button" @click="removeToCart(index)">
       Supprimer du panier
     </button>
     </div>
-    <div class="confirm" v-if="showConfirm">
-      Souhaitez-vous supprimer ce produit ?
-      <button type="button" @click="confirm(true)">oui</button>
-      <button  @click="confirm(false)">non</button>
-    </div>
+    <DialogConfirm v-if="showConfirm" @confirm="confirm" />
  </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import DialogConfirm from '@/components/DialogConfirm.vue';
 
 export default {
   name: 'CartItems',
+  components: { DialogConfirm },
   props: {
     datas: {
       type: Object || Array,
@@ -55,14 +53,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.confirm {
-  position:absolute;
-  top:50%;
-  left:50;
-  width:100px;
-  height:100px;
-  border:solid 1px grey;
-  border-radius: 4px;
-  background-color:white;
-}
+
 </style>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import ProductCard from '@/components/ProductCard.vue';
 
 export default {
@@ -22,14 +22,11 @@ export default {
     id: String,
   },
   computed: {
-    ...mapState([
-      'items',
-    ]),
     ...mapGetters([
       'getItemByReference',
     ]),
   },
-  datas() {
+  data() {
     return {
       name: '',
       price: '',
@@ -37,19 +34,12 @@ export default {
       reference: '',
     };
   },
-  methods: {
-    ...mapActions([
-      'loadItems',
-    ]),
-  },
-  async mounted() {
-    await this.loadItems();
-    // const item = this.getItemByReference(this.id);
-    console.log('', this.items);
-    /* this.name = item.name;
+  mounted() {
+    const item = this.getItemByReference(this.id);
+    this.name = item.name;
     this.price = item.price.base.formatted;
     this.image = item.images[0].xsmall;
-    this.reference = item.reference; */
+    this.reference = item.reference;
   },
 };
 </script>
