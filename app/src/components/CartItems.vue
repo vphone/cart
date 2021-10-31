@@ -1,13 +1,17 @@
 <template>
-  <div class="CartItems">
-    <div v-for="item, index in datas" :key="index">
-     <router-link :to="`/catalogue/${item.reference}`">{{ item.name }}</router-link>
-    <button type="button" @click="removeToCart(index)">
-      Supprimer du panier
-    </button>
-    </div>
+  <div>
+    <div class="cart-items">
+      <div class="cart-item" v-for="item, index in datas" :key="index">
+        <router-link class="is-primary is-light" :to="`/catalogue/${item.reference}`">
+          {{ item.name }}
+        </router-link>
+        <button class="button is-light" type="button" @click="removeToCart(index)">
+          Supprimer
+        </button>
+      </div>
+  </div>
     <DialogConfirm v-if="showConfirm" @confirm="confirm" />
- </div>
+  </div>
 </template>
 
 <script>
@@ -53,5 +57,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>

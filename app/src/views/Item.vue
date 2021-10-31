@@ -38,7 +38,7 @@ export default {
     const item = this.getItemByReference(this.id);
     this.name = item.name;
     this.price = item.price.base.formatted;
-    this.image = item.images[0].xsmall;
+    this.image = item.images[0].large;
     this.reference = item.reference;
   },
 };

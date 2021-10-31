@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div :class="isFloatting ? '' : 'cart-page columns is-8 is-centered'">
     <div v-if="isFloatting">
-      <button type="button" @click="close"> X fermer </button>
+      <button class="button is-light" type="button" @click="close"> X </button>
     </div>
     <div v-if="getCountItemsInCart() > 0" class="cart">
       <p>TOTAL : {{ getTotalPrice() }}</p>
@@ -44,3 +44,9 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.cart-page.columns.is-8.is-centered {
+  margin-top: 20px;
+}
+</style>

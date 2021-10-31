@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <button type="button" @click="showCart"> PANIER - {{ getCountItemsInCart() }}</button>
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/catalogue">Catalogue</router-link> |
-      <router-link to="/panier">Panier</router-link>
+    <div id="nav" class="navbar" role="navigation" aria-label="main navigation">
+      <router-link  class="navbar-item" to="/">Home</router-link>
+      <router-link  class="navbar-item" to="/catalogue">Catalogue</router-link>
+      <router-link  class="navbar-item" to="/panier">Panier</router-link>
+      <button class="button is-dark" type="button" @click="toggleCart">
+        PANIER - {{ getCountItemsInCart() }}
+      </button>
     </div>
     <router-view/>
-    <Cart class="floatting-cart"
+    <Cart class="floatting-cart box"
       v-show="!isHidden"
       :isFloatting="true"
       @close="()=>isHidden=true"
@@ -37,8 +39,8 @@ export default {
   mounted() {
   },
   methods: {
-    showCart() {
-      this.isHidden = false;
+    toggleCart() {
+      this.isHidden = !this.isHidden;
     },
   },
 };
@@ -49,30 +51,23 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
 #nav {
   padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px grey;
 }
 .floatting-cart {
-  position:absolute;
-  right:0;
-  top:0;
-  width:300px;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  width: 300px;
   border: solid 1px grey;
-  border-radius:4px;
-  padding:20px 10px;
-  background:white;
+  border-radius: 4px;
+  padding: 20px 10px;
+  background: white;
 }
 </style>

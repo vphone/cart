@@ -1,14 +1,17 @@
 <template>
-  <div class="Products">
-    <div v-for="item, index in datas" :key="index">
+  <div class="Products columns is-8 is-centered">
+    <div class="column is-4" v-for="item, index in datas" :key="index">
       <ProductCard :name="item.name"
-      :price="item.price.base.formatted"
-      :image="item.images[0].xsmall"
-      :reference="item.reference"
-    />
-    <button v-show="editMode" type="button" @click="addToCart(item.reference)">
-      Ajouter dans le panier
-    </button>
+        :price="item.price.base.formatted"
+        :image="item.images[0].xsmall"
+        :reference="item.reference"
+      />
+      <button class="button is-light"
+      v-show="editMode"
+      type="button"
+      @click="addToCart(item.reference)">
+        Ajouter dans le panier
+      </button>
     </div>
  </div>
 </template>
